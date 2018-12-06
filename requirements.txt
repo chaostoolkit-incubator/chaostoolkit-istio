@@ -1,2 +1,4 @@
-chaostoolkit-lib>=0.15.0
+chaostoolkit-lib>=0.21.0
 logzero
+simplejson
+kubernetes>=8.0.0

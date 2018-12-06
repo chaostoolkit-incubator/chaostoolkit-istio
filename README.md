@@ -27,8 +27,67 @@ To use the probes and actions from this package, add the following to your
 experiment file:
 
 ```json
-
-
+{
+    "secrets": {
+        "istio": {
+            "KUBERNETES_CONTEXT": {
+                "type": "env",
+                "key": "KUBERNETES_CONTEXT"
+            }
+        }
+    },
+    "method": [
+        {
+            "type": "action",
+            "name": "inject-fault-for-jason-only",
+            "provider": {
+                "type": "python",
+                "module": "chaosistio.fault.actions",
+                "func": "add_delay_fault",
+                "secrets": ["istio"],
+                "arguments": {
+                    "virtual_service_name": "reviews",
+                    "fixed_delay": "5s",
+                    "percent": 100,
+                    "routes": [
+                        {
+                            "destination": {
+                                "host": "reviews",
+                                "subset": "v2"
+                            }
+                        }
+                    ]
+                }
+            },
+            "pauses": {
+                "after": 1
+            }
+        }
+    ],
+    "rollbacks": [
+        {
+            "type": "action",
+            "name": "remove-fault-for-jason-only",
+            "provider": {
+                "type": "python",
+                "module": "chaosistio.fault.actions",
+                "func": "remove_delay_fault",
+                "secrets": ["istio"],
+                "arguments": {
+                    "virtual_service_name": "reviews",
+                    "routes": [
+                        {
+                            "destination": {
+                                "host": "reviews",
+                                "subset": "v2"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
 ```
 
 That's it!
