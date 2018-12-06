@@ -96,6 +96,9 @@ Please explore the code to see existing probes and actions.
 
 ## Configuration
 
+This extension needs you specify how to connect to the Kubernetes cluster. This
+can be done by setting the `KUBERNETES_CONTEXT` in the `secrets` payload.
+
 
 ## Contribute
 
