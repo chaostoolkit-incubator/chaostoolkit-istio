@@ -118,5 +118,5 @@ def load_exported_activities() -> List[DiscoveredActivities]:
     """
     activities = []
     activities.extend(discover_actions("chaosistio.fault.actions"))
-    activities.extend(discover_probes("chaosisio.fault.probes"))
+    activities.extend(discover_probes("chaosistio.fault.probes"))
     return activities
