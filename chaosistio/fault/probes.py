@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 from chaoslib.types import Configuration, Secrets
-from kubernetes import client
 from kubernetes.client.rest import ApiException
-from logzero import logger
 import simplejson as json
 
 from chaosistio import create_k8s_api_client

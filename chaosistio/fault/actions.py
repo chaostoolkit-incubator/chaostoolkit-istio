@@ -5,17 +5,16 @@ from typing import Any, Dict, List
 from chaoslib.exceptions import ActivityFailed
 from chaoslib.types import Configuration, Secrets
 from kubernetes.client.rest import ApiException
-from logzero import logger
 import simplejson as json
 
 from chaosistio import create_k8s_api_client
 from chaosistio.fault.probes import get_virtual_service
 
-__all__ = ["set_fault", "add_delay", "add_abort",
-           "unset_fault", "remove_delay", "remove_abort"]
+__all__ = ["set_fault", "add_delay_fault", "add_abort_fault",
+           "unset_fault", "remove_delay_fault", "remove_abort_fault"]
 
 
-def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],
+def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa: C901
               fault: Dict[str, Any], ns: str = "default",
               version: str = "networking.istio.io/v1alpha3",
               configuration: Configuration = None,
@@ -46,7 +45,6 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],
                 (destination["host"], destination["subset"]))
 
     # inject a fault block into the targets
-    destinations = set()
     spec = deepcopy(result["body"]["spec"]["http"])
     for i in spec:
         if "route" in i:
@@ -100,7 +98,7 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],
     }
 
 
-def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],
+def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa: C901
                 ns: str = "default",
                 version: str = "networking.istio.io/v1alpha3",
                 configuration: Configuration = None,
@@ -129,7 +127,6 @@ def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],
                 (destination["host"], destination["subset"]))
 
     # remove fault block from the targets
-    destinations = set()
     spec = deepcopy(result["body"]["spec"]["http"])
     for i in spec:
         if "route" in i:

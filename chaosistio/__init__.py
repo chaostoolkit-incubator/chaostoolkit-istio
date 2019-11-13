@@ -5,9 +5,8 @@ from typing import List
 
 from chaoslib.discovery.discover import discover_actions, discover_probes, \
     initialize_discovery_result
-from chaoslib.exceptions import DiscoveryFailed
 from chaoslib.types import Configuration, Discovery, DiscoveredActivities, \
-    DiscoveredSystemInfo, Secrets
+    Secrets
 from kubernetes import client, config
 from logzero import logger
 
