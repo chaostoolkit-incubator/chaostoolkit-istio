@@ -4,6 +4,10 @@
 
 [Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.0...HEAD
 
+### Changed
+
+-   Improved readme docs
+-   Catching exceptions of API calls
 
 ## [0.1.0][] - 2018-12-06
 
