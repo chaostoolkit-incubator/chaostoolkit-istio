@@ -36,7 +36,7 @@ def get_virtual_service(virtual_service_name: str, ns: str = "default",
             _preload_content=False
         )
     except ApiException as x:
-        body = x.body.read(decode_content=True)
+        body = x.body
         if x.headers.get("Content-Type") == "application/json":
             body = json.loads(body)
         return {
