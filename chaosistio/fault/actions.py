@@ -71,17 +71,27 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],
         "spec": {"http": spec}
     }
 
-    data, status, headers = api.call_api(
-        url,
-        "PATCH",
-        header_params={
-            "Content-Type": "application/merge-patch+json",
-            "Accept": "application/json"
-        },
-        body=payload,
-        auth_settings=['BearerToken'],
-        _preload_content=False
-    )
+    try:
+        data, status, headers = api.call_api(
+            url,
+            "PATCH",
+            header_params={
+                "Content-Type": "application/merge-patch+json",
+                "Accept": "application/json"
+            },
+            body=payload,
+            auth_settings=['BearerToken'],
+            _preload_content=False
+        )
+    except ApiException as x:
+        body = x.body
+        if x.headers.get("Content-Type") == "application/json":
+            body = json.loads(body)
+        return {
+            "status": x.status,
+            "body": body,
+            "headers": dict(**x.headers)
+        }
 
     return {
         "status": status,
@@ -143,17 +153,27 @@ def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],
         "spec": {"http": spec}
     }
 
-    data, status, headers = api.call_api(
-        url,
-        "PATCH",
-        header_params={
-            "Content-Type": "application/merge-patch+json",
-            "Accept": "application/json"
-        },
-        body=payload,
-        auth_settings=['BearerToken'],
-        _preload_content=False
-    )
+    try:
+        data, status, headers = api.call_api(
+            url,
+            "PATCH",
+            header_params={
+                "Content-Type": "application/merge-patch+json",
+                "Accept": "application/json"
+            },
+            body=payload,
+            auth_settings=['BearerToken'],
+            _preload_content=False
+        )
+    except ApiException as x:
+        body = x.body
+        if x.headers.get("Content-Type") == "application/json":
+            body = json.loads(body)
+        return {
+            "status": x.status,
+            "body": body,
+            "headers": dict(**x.headers)
+        }
 
     return {
         "status": status,
