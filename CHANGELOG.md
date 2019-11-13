@@ -2,11 +2,21 @@
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.2...HEAD
+
+## [0.1.2][] - 2018-11-13
+
+[0.1.2]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.1...0.1.2
+
+### Changed
+
+-   Fixed typo [#2][2] (thanks Alberto)
+
+[2]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/pull/2
 
 ## [0.1.1][] - 2018-11-13
 
-[0.1.1]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/tree/0.1.1
+[0.1.1]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.0...0.1.1
 
 ### Changed
 
