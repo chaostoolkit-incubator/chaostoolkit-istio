@@ -18,7 +18,7 @@ def test_add_fault_if_route_matches(client, get_vs):
     fault = {
         "delay": {
             "fixedDelay": "5s",
-            "percent": 100
+            "percentage": 100.0
         }
     }
 
@@ -100,7 +100,7 @@ def test_add_fault_if_route_matches(client, get_vs):
                         'fault': {
                             'delay': {
                                 'fixedDelay': '5s',
-                                'percent': 100
+                                'percentage': 100.0
                             }
                         }
                     },
@@ -138,7 +138,7 @@ def test_does_not_add_fault_if_no_route_matches(client, get_vs):
     fault = {
         "delay": {
             "fixedDelay": "5s",
-            "percent": 100
+            "percentage": 100.0
         }
     }
 
@@ -252,7 +252,7 @@ def test_remove_fault_if_route_matches(client, get_vs):
     fault = {
         "delay": {
             "fixedDelay": "5s",
-            "percent": 100
+            "percentage": 100.0
         }
     }
 
@@ -283,7 +283,7 @@ def test_remove_fault_if_route_matches(client, get_vs):
                         'fault': {
                             'delay': {
                                 'fixedDelay': '5s',
-                                'percent': 100
+                                'percentage': 100.0
                             }
                         }
                     },
@@ -421,7 +421,7 @@ def test_add_delay_fault(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = add_delay_fault("mysvc", "5s", routes, percent=100)
+    res = add_delay_fault("mysvc", "5s", routes, percentage=100.0)
     call_api.assert_called_with(
         "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
         "PATCH",
@@ -447,7 +447,7 @@ def test_add_delay_fault(client, get_vs):
                         'fault': {
                             'delay': {
                                 'fixedDelay': '5s',
-                                'percent': 100
+                                'percentage': 100.0
                             }
                         }
                     },
@@ -534,7 +534,7 @@ def test_add_abort_fault(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = add_abort_fault("mysvc", 404, routes, percent=100)
+    res = add_abort_fault("mysvc", 404, routes, percentage=100.0)
     call_api.assert_called_with(
         "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
         "PATCH",
@@ -560,7 +560,7 @@ def test_add_abort_fault(client, get_vs):
                         'fault': {
                             'abort': {
                                 'httpStatus': 404,
-                                'percent': 100
+                                'percentage': 100.0
                             }
                         }
                     },
