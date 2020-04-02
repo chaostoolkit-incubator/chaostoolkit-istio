@@ -95,7 +95,7 @@ $ export PRODUCT_PAGE_SERVICE_BASE_URL=$(kubectl get po -l istio=ingressgateway 
                 "arguments": {
                     "virtual_service_name": "reviews",
                     "fixed_delay": "5s",
-                    "percent": 100,
+                    "percentage": 100.0,
                     "routes": [
                         {
                             "destination": {

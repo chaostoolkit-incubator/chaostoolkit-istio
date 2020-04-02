@@ -1,6 +1,6 @@
 coverage
 pycodestyle
-pytest>=2.8
+pytest==5.3.5
 pytest-cov
 pytest-sugar
 requests

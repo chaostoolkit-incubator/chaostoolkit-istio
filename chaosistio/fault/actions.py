@@ -181,7 +181,7 @@ def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa
 
 def add_delay_fault(virtual_service_name: str, fixed_delay: str,
                     routes: List[Dict[str, str]],
-                    percent: float = None, ns: str = "default",
+                    percentage: float = None, ns: str = "default",
                     version: str = "networking.istio.io/v1alpha3",
                     configuration: Configuration = None,
                     secrets: Secrets = None) -> Dict[str, Any]:
@@ -195,8 +195,8 @@ def add_delay_fault(virtual_service_name: str, fixed_delay: str,
             "fixedDelay": fixed_delay
         }
     }
-    if percent is not None:
-        fault["delay"]["percent"] = percent
+    if percentage is not None:
+        fault["delay"]["percentage"] = percentage
 
     return set_fault(
         virtual_service_name, fault=fault, ns=ns, configuration=configuration,
@@ -206,7 +206,7 @@ def add_delay_fault(virtual_service_name: str, fixed_delay: str,
 
 def add_abort_fault(virtual_service_name: str, http_status: int,
                     routes: List[Dict[str, str]],
-                    percent: float = None, ns: str = "default",
+                    percentage: float = None, ns: str = "default",
                     version: str = "networking.istio.io/v1alpha3",
                     configuration: Configuration = None,
                     secrets: Secrets = None) -> Dict[str, Any]:
@@ -220,8 +220,8 @@ def add_abort_fault(virtual_service_name: str, http_status: int,
             "httpStatus": http_status
         }
     }
-    if percent is not None:
-        fault["abort"]["percent"] = percent
+    if percentage is not None:
+        fault["abort"]["percentage"] = percentage
 
     return set_fault(
         virtual_service_name, fault=fault, ns=ns, configuration=configuration,
