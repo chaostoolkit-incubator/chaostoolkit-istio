@@ -2,7 +2,17 @@
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.2...HEAD
+[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.3...HEAD
+
+## [0.1.3][] - 2020-04-02
+
+[0.1.3]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.2...0.1.3
+
+### Changed
+
+-   remove deprecated `percent` attribute [#4][4]
+
+[4]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/pull/4
 
 ## [0.1.2][] - 2018-11-13
 
