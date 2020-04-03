@@ -4,6 +4,12 @@
 
 [Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.3...HEAD
 
+### Changed
+
+-   fix for Percent datatype [#6][6]
+
+[6]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/pull/6
+
 ## [0.1.3][] - 2020-04-02
 
 [0.1.3]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.2...0.1.3

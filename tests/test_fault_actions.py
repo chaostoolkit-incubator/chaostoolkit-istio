@@ -18,7 +18,9 @@ def test_add_fault_if_route_matches(client, get_vs):
     fault = {
         "delay": {
             "fixedDelay": "5s",
-            "percentage": 100.0
+            "percentage": {
+                "value": 100.0
+            }
         }
     }
 
@@ -100,7 +102,9 @@ def test_add_fault_if_route_matches(client, get_vs):
                         'fault': {
                             'delay': {
                                 'fixedDelay': '5s',
-                                'percentage': 100.0
+                                'percentage': {
+                                    'value': 100.0
+                                }
                             }
                         }
                     },
@@ -138,7 +142,9 @@ def test_does_not_add_fault_if_no_route_matches(client, get_vs):
     fault = {
         "delay": {
             "fixedDelay": "5s",
-            "percentage": 100.0
+            "percentage": {
+                "value": 100.0
+            }
         }
     }
 
@@ -252,7 +258,9 @@ def test_remove_fault_if_route_matches(client, get_vs):
     fault = {
         "delay": {
             "fixedDelay": "5s",
-            "percentage": 100.0
+            "percentage": {
+                "value": 100.0
+            }
         }
     }
 
@@ -283,7 +291,9 @@ def test_remove_fault_if_route_matches(client, get_vs):
                         'fault': {
                             'delay': {
                                 'fixedDelay': '5s',
-                                'percentage': 100.0
+                                'percentage': {
+                                    'value': 100.0
+                                }
                             }
                         }
                     },
@@ -447,7 +457,9 @@ def test_add_delay_fault(client, get_vs):
                         'fault': {
                             'delay': {
                                 'fixedDelay': '5s',
-                                'percentage': 100.0
+                                'percentage': {
+                                    'value': 100.0
+                                }
                             }
                         }
                     },
@@ -560,7 +572,9 @@ def test_add_abort_fault(client, get_vs):
                         'fault': {
                             'abort': {
                                 'httpStatus': 404,
-                                'percentage': 100.0
+                                'percentage': {
+                                    'value': 100.0
+                                }
                             }
                         }
                     },
