@@ -196,7 +196,8 @@ def add_delay_fault(virtual_service_name: str, fixed_delay: str,
         }
     }
     if percentage is not None:
-        fault["delay"]["percentage"] = percentage
+        fault["delay"]["percentage"] = {}
+        fault["delay"]["percentage"]["value"] = percentage
 
     return set_fault(
         virtual_service_name, fault=fault, ns=ns, configuration=configuration,
@@ -221,7 +222,8 @@ def add_abort_fault(virtual_service_name: str, http_status: int,
         }
     }
     if percentage is not None:
-        fault["abort"]["percentage"] = percentage
+        fault["abort"]["percentage"] = {}
+        fault["abort"]["percentage"]["value"] = percentage
 
     return set_fault(
         virtual_service_name, fault=fault, ns=ns, configuration=configuration,
