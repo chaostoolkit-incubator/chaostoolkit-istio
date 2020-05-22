@@ -17,7 +17,7 @@ def get_virtual_service(virtual_service_name: str, ns: str = "default",
     """
     Get a virtual service identified by `name`
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#VirtualService
+    See https://istio.io/docs/reference/config/networking/virtual-service/#VirtualService
     """  # noqa: E501
     api = create_k8s_api_client(configuration, secrets)
     url = "/apis/{}/namespaces/{}/virtualservices/{}".format(
