@@ -51,7 +51,8 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa: 
             for route in i["route"]:
                 if "destination" in route:
                     destination = route["destination"]
-                    # not mandatory in response https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+                    # not mandatory in response
+                    # https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination  # noqa: E501
                     target = (destination["host"], destination.get("subset"))
                     if target in expected_destinations:
                         i["fault"] = fault
