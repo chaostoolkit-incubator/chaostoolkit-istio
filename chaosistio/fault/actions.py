@@ -42,7 +42,7 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa: 
         if "destination" in route:
             destination = route["destination"]
             expected_destinations.add(
-                (destination["host"], destination["subset"]))
+                (destination["host"], destination.get("subset")))
 
     # inject a fault block into the targets
     spec = deepcopy(result["body"]["spec"]["http"])
@@ -51,7 +51,8 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa: 
             for route in i["route"]:
                 if "destination" in route:
                     destination = route["destination"]
-                    target = (destination["host"], destination["subset"])
+                    # not mandatory in response https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+                    target = (destination["host"], destination.get("subset"))
                     if target in expected_destinations:
                         i["fault"] = fault
                         break

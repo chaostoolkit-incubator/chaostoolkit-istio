@@ -62,6 +62,11 @@ def test_add_fault_if_route_matches(client, get_vs):
                                     "host": "otherhost",
                                     "subset": "v1"
                                 }
+                            },
+                            {
+                                "destination": {
+                                    "host": "yetotherhost"
+                                }
                             }
                         ]
                     }
@@ -120,6 +125,11 @@ def test_add_fault_if_route_matches(client, get_vs):
                                 'destination': {
                                     'host': 'otherhost',
                                     'subset': 'v1'
+                                }
+                            },
+                            {
+                                "destination": {
+                                    "host": "yetotherhost"
                                 }
                             }
                         ]

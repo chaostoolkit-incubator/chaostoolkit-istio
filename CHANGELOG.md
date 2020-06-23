@@ -4,6 +4,12 @@
 
 [Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.4...HEAD
 
+### Changed
+
+-   Ensure destination route without subset can be matched [#9][9]
+
+[9]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/issues/9
+
 ## [0.1.4][] - 2020-04-03
 
 [0.1.4]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.3...0.1.4
