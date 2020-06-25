@@ -126,7 +126,7 @@ def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa
         if "destination" in route:
             destination = route["destination"]
             expected_destinations.add(
-                (destination["host"], destination["subset"]))
+                (destination["host"], destination.get("subset"])))
 
     # remove fault block from the targets
     spec = deepcopy(result["body"]["spec"]["http"])
@@ -135,7 +135,7 @@ def unset_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa
             for route in i["route"]:
                 if "destination" in route:
                     destination = route["destination"]
-                    target = (destination["host"], destination["subset"])
+                    target = (destination["host"], destination.get("subset"))
                     if target in expected_destinations:
                         i.pop("fault", None)
 
