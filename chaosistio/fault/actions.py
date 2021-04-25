@@ -246,7 +246,7 @@ def remove_delay_fault(virtual_service_name: str,
     """  # noqa: E501
     return unset_fault(
         virtual_service_name, ns=ns, configuration=configuration,
-        secrets=secrets, routes=routes,version=version
+        secrets=secrets, routes=routes, version=version
     )
 
 
@@ -262,5 +262,5 @@ def remove_abort_fault(virtual_service_name: str,
     """  # noqa: E501
     return unset_fault(
         virtual_service_name, ns=ns, configuration=configuration,
-        secrets=secrets, routes=routes,version=version
+        secrets=secrets, routes=routes, version=version
     )
