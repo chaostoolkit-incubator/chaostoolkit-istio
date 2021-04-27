@@ -203,7 +203,7 @@ def add_delay_fault(virtual_service_name: str, fixed_delay: str,
 
     return set_fault(
         virtual_service_name, fault=fault, ns=ns, configuration=configuration,
-        secrets=secrets, routes=routes
+        secrets=secrets, routes=routes, version=version
     )
 
 
@@ -229,7 +229,7 @@ def add_abort_fault(virtual_service_name: str, http_status: int,
 
     return set_fault(
         virtual_service_name, fault=fault, ns=ns, configuration=configuration,
-        secrets=secrets, routes=routes
+        secrets=secrets, routes=routes, version=version
     )
 
 
@@ -246,7 +246,7 @@ def remove_delay_fault(virtual_service_name: str,
     """  # noqa: E501
     return unset_fault(
         virtual_service_name, ns=ns, configuration=configuration,
-        secrets=secrets, routes=routes
+        secrets=secrets, routes=routes, version=version
     )
 
 
@@ -262,5 +262,5 @@ def remove_abort_fault(virtual_service_name: str,
     """  # noqa: E501
     return unset_fault(
         virtual_service_name, ns=ns, configuration=configuration,
-        secrets=secrets, routes=routes
+        secrets=secrets, routes=routes, version=version
     )
