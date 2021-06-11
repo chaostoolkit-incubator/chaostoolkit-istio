@@ -13,6 +13,7 @@
 -   Bumped dependencies and removed the hard pinning on logzero as it was 
     conflicting with other chaostoolkit libraries
 -   Switched from Travis to GitHub actions
+-   Made Python 3.5 support deprecated as Python 3.5 has EOL last year
 
 ## [0.1.5][] - 2021-05-28
 
