@@ -2,7 +2,16 @@
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.5...HEAD
+[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.6...HEAD
+
+## [0.2.0][] - 2021-06-11
+
+[0.1.5]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.5...0.1.6
+
+### Changed
+
+-   Bumped dependencies and removed the hard pinning on logzero as it was 
+    conflicting with other chaostoolkit libraries
 
 ## [0.1.5][] - 2021-05-28
 
