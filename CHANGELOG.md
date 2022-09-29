@@ -2,11 +2,18 @@
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.1...HEAD
+
+## [0.2.1][] - 2022-09-29
+
+[0.2.1]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.0...0.2.1
 
 ### Changed
 
 - Relaxed pinning of logzero dependency
+- Fix development dependencies
+- Updated GitHub actions
+- Introduced pyproject.toml
 
 ## [0.2.0][] - 2021-06-11
 
