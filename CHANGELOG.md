@@ -4,6 +4,10 @@
 
 [Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.0...HEAD
 
+### Changed
+
+- Relaxed pinning of logzero dependency
+
 ## [0.2.0][] - 2021-06-11
 
 [0.2.0]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.5...0.2.0
