@@ -1,8 +1,9 @@
 coverage
 pycodestyle
-pytest==5.3.5
+pytest
 pytest-cov
 pytest-sugar
 requests
 requests_mock
 pylama
+pyflakes==2.4.0
