@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt -r requirements-dev.txt
     - name: Checking the code syntax
       run: |
-        pylama chaosistio
+        make lint
     - name: Run tests
       run: |
         pip install -e .

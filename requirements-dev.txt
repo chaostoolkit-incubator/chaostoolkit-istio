@@ -5,7 +5,6 @@ pytest-cov
 pytest-sugar
 requests
 requests_mock
-pylama
 pyflakes==2.4.0
 black
 flake8
