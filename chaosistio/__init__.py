@@ -3,26 +3,34 @@ import os
 import os.path
 from typing import List
 
-from chaoslib.discovery.discover import discover_actions, discover_probes, \
-    initialize_discovery_result
-from chaoslib.types import Configuration, Discovery, DiscoveredActivities, \
-    Secrets
+from chaoslib.discovery.discover import (
+    discover_actions,
+    discover_probes,
+    initialize_discovery_result,
+)
+from chaoslib.types import (
+    Configuration,
+    DiscoveredActivities,
+    Discovery,
+    Secrets,
+)
 from kubernetes import client, config
 from logzero import logger
 
-
 __all__ = ["create_k8s_api_client", "discover", "__version__"]
-__version__ = '0.2.1'
+__version__ = "0.3.0"
 
 
 def has_local_config_file():
     config_path = os.path.expanduser(
-        os.environ.get('KUBECONFIG', '~/.kube/config'))
+        os.environ.get("KUBECONFIG", "~/.kube/config")
+    )
     return os.path.exists(config_path)
 
 
-def create_k8s_api_client(configuration: Configuration,
-                          secrets: Secrets = None) -> client.ApiClient:
+def create_k8s_api_client(
+    configuration: Configuration, secrets: Secrets = None
+) -> client.ApiClient:
     """
     Create a Kubernetes client from:
 
@@ -64,8 +72,9 @@ def create_k8s_api_client(configuration: Configuration,
 
     if has_local_config_file():
         context = lookup("KUBERNETES_CONTEXT")
-        logger.debug("Using Kubernetes context: {}".format(
-            context or "default"))
+        logger.debug(
+            "Using Kubernetes context: {}".format(context or "default")
+        )
         return config.new_client_from_config(context=context)
 
     elif env.get("CHAOSTOOLKIT_IN_POD") == "true":
@@ -76,17 +85,15 @@ def create_k8s_api_client(configuration: Configuration,
         cfg = client.Configuration()
         cfg.debug = True
         cfg.host = lookup("KUBERNETES_HOST", "http://localhost")
-        cfg.verify_ssl = lookup(
-            "KUBERNETES_VERIFY_SSL", False) is not False
+        cfg.verify_ssl = lookup("KUBERNETES_VERIFY_SSL", False) is not False
         cfg.cert_file = lookup("KUBERNETES_CA_CERT_FILE")
 
         if "KUBERNETES_API_KEY" in env or "KUBERNETES_API_KEY" in secrets:
-            cfg.api_key['authorization'] = lookup(
-                "KUBERNETES_API_KEY")
-            cfg.api_key_prefix['authorization'] = lookup(
-                "KUBERNETES_API_KEY_PREFIX", "Bearer")
-        elif "KUBERNETES_CERT_FILE" in env or \
-                "KUBERNETES_CERT_FILE" in secrets:
+            cfg.api_key["authorization"] = lookup("KUBERNETES_API_KEY")
+            cfg.api_key_prefix["authorization"] = lookup(
+                "KUBERNETES_API_KEY_PREFIX", "Bearer"
+            )
+        elif "KUBERNETES_CERT_FILE" in env or "KUBERNETES_CERT_FILE" in secrets:
             cfg.cert_file = lookup("KUBERNETES_CERT_FILE")
             cfg.key_file = lookup("KUBERNETES_KEY_FILE")
         elif "KUBERNETES_USERNAME" in env or "KUBERNETES_USERNAME" in secrets:
@@ -103,7 +110,8 @@ def discover(discover_system: bool = True) -> Discovery:
     logger.info("Discovering capabilities from chaostoolkit-istio")
 
     discovery = initialize_discovery_result(
-        "chaostoolkit-istio", __version__, "istio")
+        "chaostoolkit-istio", __version__, "istio"
+    )
     discovery["activities"].extend(load_exported_activities())
     return discovery
 
