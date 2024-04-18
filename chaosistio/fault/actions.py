@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
+import json
 from copy import deepcopy
 from typing import Any, Dict, List
 
-import simplejson as json
 from chaoslib.exceptions import ActivityFailed
 from chaoslib.types import Configuration, Secrets
 from kubernetes.client.rest import ApiException

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
+import json
 from typing import Any, Dict
 
-import simplejson as json
 from chaoslib.types import Configuration, Secrets
 from kubernetes.client.rest import ApiException
 
