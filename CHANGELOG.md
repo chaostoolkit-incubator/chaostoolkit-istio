@@ -4,6 +4,11 @@
 
 [Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.3.0...HEAD
 
+### Changed
+
+* Dropped `simplejson` dependency
+* Dropped `logzero` dependency
+
 ## [0.3.0][] - 2023-02-27
 
 [0.3.0]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.1...0.3.0

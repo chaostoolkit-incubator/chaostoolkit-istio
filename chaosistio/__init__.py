@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 import os
 import os.path
 from typing import List
@@ -15,10 +16,10 @@ from chaoslib.types import (
     Secrets,
 )
 from kubernetes import client, config
-from logzero import logger
 
 __all__ = ["create_k8s_api_client", "discover", "__version__"]
 __version__ = "0.3.0"
+logger = logging.getLogger("chaostoolkit")
 
 
 def has_local_config_file():
