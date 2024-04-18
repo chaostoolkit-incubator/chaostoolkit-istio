@@ -2,7 +2,11 @@
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.4.0...HEAD
+
+## [0.4.0][] - 2024-04-18
+
+[0.4.0]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.3.0...0.4.0
 
 ### Changed
 

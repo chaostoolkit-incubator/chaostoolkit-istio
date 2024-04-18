@@ -22,7 +22,7 @@ __all__ = ["create_k8s_api_client", "discover", "__version__"]
 logger = logging.getLogger("chaostoolkit")
 
 try:
-    __version__ = version("chaostoolkit-datadog")
+    __version__ = version("chaostoolkit-istio")
 except PackageNotFoundError:
     __version__ = "unknown"
 
