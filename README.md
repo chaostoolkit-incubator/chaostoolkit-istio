@@ -1,5 +1,6 @@
  # Chaos Toolkit Extension for Istio Fault Injection
-[![Build Status](https://travis-ci.org/chaostoolkit-incubator/chaostoolkit-istio.svg?branch=master)](https://travis-ci.org/chaostoolkit-incubator/chaostoolkit-istio)
+ 
+[![Build](https://github.com/chaostoolkit-incubator/chaostoolkit-istio/actions/workflows/build.yaml/badge.svg)](https://github.com/chaostoolkit-incubator/chaostoolkit-istio/actions/workflows/build.yaml)
 [![Python versions](https://img.shields.io/pypi/pyversions/chaostoolkit-istio.svg)](https://www.python.org/)
 
 
