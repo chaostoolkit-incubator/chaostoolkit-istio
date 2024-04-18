@@ -8,6 +8,8 @@
 
 * Dropped `simplejson` dependency
 * Dropped `logzero` dependency
+* Moved to `ruff`
+* Moved away from `setuptools` to `pdm`
 
 ## [0.3.0][] - 2023-02-27
 

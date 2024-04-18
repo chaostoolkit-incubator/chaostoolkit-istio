@@ -1,8 +1,89 @@
 [build-system]
-requires = [
-    "setuptools>=51.0",
-    "wheel",
-    "setuptools_scm>=1.15",
-    "setuptools_scm_git_archive>=1.0",
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+name = "chaostoolkit-istio"
+dynamic = ["version"]
+description = "Chaos Toolkit Extension for Istio Fault Injection"
+authors = [
+    {name = "Chaos Toolkit", email = "contact@chaostoolkit.org"},
+    {name = "Sylvain Hellegouarch", email = "sh@defuze.org"},
 ]
-build-backend = "setuptools.build_meta"
+dependencies = [
+    "kubernetes>=29.0.0",
+    "chaostoolkit-lib>=1.42.1",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: Freely Distributable",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+
+[project.urls]
+Homepage = "https://chaostoolkit.org/"
+documentation = "https://chaostoolkit.org/drivers/istio/"
+repository = "https://github.com/chaostoolkit-incubator/chaostoolkit-istio"
+changelog = "https://github.com/chaostoolkit-incubator/chaostoolkit-istio/blob/master/CHANGELOG.md"
+
+
+[tool.pdm]
+distribution = true
+version = { source = "scm" }
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "coverage>=7.4.4",
+    "pytest>=8.1.1",
+    "pytest-cov>=5.0.0",
+    "pytest-sugar>=1.0.0",
+    "requests-mock>=1.12.1",
+    "ruff>=0.3.7",
+]
+
+[tool.pdm.scripts]
+lint = {composite = ["ruff check chaosistio/"]}
+format = {composite = ["ruff check --fix chaosistio/", "ruff format chaosistio/"]}
+test = {cmd = "pytest"}
+
+[tool.ruff]
+line-length = 80
+exclude = [
+    ".eggs",
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "build",
+    "dist",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = "tests"
+addopts = "-v -rxs --cov chaosistio --cov-report term-missing:skip-covered -p no:warnings"

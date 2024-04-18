@@ -8,25 +8,22 @@ on:
 
 jobs:
   release-to-pypi:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    environment: release
+    permissions:
+      id-token: write
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - uses: actions/checkout@v4
+    - name: Set up PDM
+      uses: pdm-project/setup-pdm@v4
       with:
-        python-version: '3.7'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade setuptools wheel twine build
-    - name: Build and publish
+        python-version: "3.8"
+    - name: Build wheels
+      run: pdm build --no-sdist
       env:
-        TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-      run: |
-        python3 -m build
-        twine upload dist/*
-    # push artifacts for other jobs to use
+        PDM_BUILD_SCM_VERSION: ${{github.ref_name}}
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
     - name: Upload packages as artifacts
       uses: actions/upload-artifact@v2-preview
       with:
@@ -34,12 +31,12 @@ jobs:
         path: dist/chaostoolkit*
 
   create-gh-release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Create Release
         uses: actions/create-release@latest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
@@ -47,7 +44,7 @@ jobs:
           prerelease: false
 
   upload-gh-release-assets:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - create-gh-release
       - release-to-pypi
@@ -60,6 +57,7 @@ jobs:
       - name: Upload wheel & source dist to GH release
         uses: ncipollo/release-action@v1
         with:
-          artifact: "dist/*.whl,dist/*.tar.gz"
+          artifacts: "dist/*.whl,dist/*.tar.gz"
+          artifact: ""
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true

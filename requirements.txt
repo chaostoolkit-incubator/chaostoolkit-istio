@@ -1,4 +1,0 @@
-chaostoolkit-lib~=1.19
-logzero~=1.5
-simplejson~=3.16
-kubernetes~=17.0

@@ -103,3 +103,13 @@ ENV/
 .DS_Store
 junit-test-results.xml
 .vscode/
+
+# pdm
+.pdm-python
+.pdm-build/
+
+# ruff
+.ruff_cache/
+
+# pytest
+.pytest_cache/

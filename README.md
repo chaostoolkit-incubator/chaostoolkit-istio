@@ -12,7 +12,7 @@ extension to the [Chaos Toolkit][chaostoolkit].
 
 ## Install
 
-This package requires Python 3.6+
+This package requires Python 3.8+
 
 To be used from your experiment, this package must be installed in the Python
 environment where [chaostoolkit][] already lives.
@@ -168,19 +168,10 @@ the rules of the DCO before submitting a PR.
 ### Develop
 
 If you wish to develop on this project, make sure to install the development
-dependencies. But first, [create a virtual environment][venv] and then install
-those dependencies.
-
-[venv]: http://chaostoolkit.org/reference/usage/install/#create-a-virtual-environment
+dependencies, using [pdm](https://pdm-project.org/en/latest/):
 
 ```console
-$ pip install -r requirements-dev.txt -r requirements.txt
-```
-
-Then, point your environment to this directory:
-
-```console
-$ python setup.py develop
+$ pdm install --dev
 ```
 
 Now, you can edit the files and they will be automatically be seen by your
@@ -191,5 +182,30 @@ environment, even when running from the `chaos` command locally.
 To run the tests for the project execute the following:
 
 ```
-$ pytest
+$ pdm run test
 ```
+
+### Formatting and Linting
+
+We use [`ruff`][ruff] to both lint and format this repositories code.
+
+[ruff]: https://github.com/astral-sh/ruff
+
+Before raising a Pull Request, we recommend you run formatting against your
+code with:
+
+```console
+$ pdm run format
+```
+
+This will automatically format any code that doesn't adhere to the formatting
+standards.
+
+As some things are not picked up by the formatting, we also recommend you run:
+
+```console
+$ pdm run lint
+```
+
+To ensure that any unused import statements/strings that are too long, etc.
+are also picked up.
