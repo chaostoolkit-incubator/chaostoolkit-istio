@@ -37,7 +37,7 @@ def set_fault(
 
     If a fault already exists, it is updated with the new specification.
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#HTTPFaultInjection
+    See https://istio.io/docs/reference/config/networking/virtual-service/#HTTPFaultInjection
     """  # noqa: E501
     result = get_virtual_service(
         virtual_service_name,
@@ -127,7 +127,7 @@ def unset_fault(
     The `fault` argument must be the object passed as the `spec` property
     of a virtual service resource.
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#HTTPFaultInjection
+    See https://istio.io/docs/reference/config/networking/virtual-service/#HTTPFaultInjection
     """  # noqa: E501
     result = get_virtual_service(
         virtual_service_name,
@@ -213,7 +213,7 @@ def add_delay_fault(
     """
     Add delay to the virtual service identified by `name`
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#HTTPFaultInjection-Delay
+    See https://istio.io/docs/reference/config/networking/virtual-service/#HTTPFaultInjection-Delay
     """  # noqa: E501
     fault = {"delay": {"fixedDelay": fixed_delay}}
     if percentage is not None:
@@ -244,7 +244,7 @@ def add_abort_fault(
     """
     Abort requests early by the virtual service identified by `name`
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#HTTPFaultInjection-Abort
+    See https://istio.io/docs/reference/config/networking/virtual-service/#HTTPFaultInjection-Abort
     """  # noqa: E501
     fault = {"abort": {"httpStatus": http_status}}
     if percentage is not None:
@@ -273,7 +273,7 @@ def remove_delay_fault(
     """
     Remove delay from the virtual service identified by `name`
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#HTTPFaultInjection-Delay
+    See https://istio.io/docs/reference/config/networking/virtual-service/#HTTPFaultInjection-Delay
     """  # noqa: E501
     return unset_fault(
         virtual_service_name,
@@ -296,7 +296,7 @@ def remove_abort_fault(
     """
     Remove abort request faults from the virtual service identified by `name`
 
-    See https://istio.io/docs/reference/config/istio.networking.v1alpha3/#HTTPFaultInjection-Abort
+    See https://istio.io/docs/reference/config/networking/virtual-service/#HTTPFaultInjection-Abort
     """  # noqa: E501
     return unset_fault(
         virtual_service_name,
